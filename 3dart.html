@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D ART — Marco Zagara</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="container nav__inner">
+
+      <a href="index.html" class="nav__brand">MARCOZAGARA</a>
+
+      <div class="nav__links">
+        <a href="index.html#work">WORK</a>
+        <a href="index.html#about">ABOUT</a>
+        <a href="index.html#contact">CONTACT</a>
+        <a href="#">PRINTS</a>
+      </div>
+
+      <div class="nav__icons">
+        <a href="https://instagram.com/marcozagara" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="images/instagram.svg" alt="Instagram">
+        </a>
+
+        <a href="https://x.com/marcozagara" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <img src="images/x.svg" alt="X">
+        </a>
+
+        <a href="mailto:marcozagara17@email.com" aria-label="Email">
+          <img src="images/email.svg" alt="Email">
+        </a>
+      </div>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="nav__mobile-menu" id="navMenu">
+      <div class="nav__mobile-work">
+      <button
+        class="nav__mobile-work-toggle"
+        id="mobileWorkToggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobileWorkSubmenu"
+      >
+        <span>WORK</span>
+        <span class="nav__mobile-work-arrow" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav__mobile-submenu" id="mobileWorkSubmenu">
+        <a href="3dart.html">3D ART</a>
+        <a href="animations.html">ANIMATIONS</a>
+        <a href="illustrations.html">ILLUSTRATIONS</a>
+      </div>
+      </div>
+      <a href="index.html#about">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
+      <a href="#">PRINTS</a>
+
+      <div class="nav__mobile-icons">
+        <a href="https://instagram.com/marcozagara" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="images/instagram.svg" alt="Instagram">
+        </a>
+
+        <a href="https://x.com/marcozagara" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <img src="images/x.svg" alt="X">
+        </a>
+
+        <a href="mailto:marcozagara17@email.com" aria-label="Email">
+          <img src="images/email.svg" alt="Email">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE -->
+  <main class="gallery-page">
+    <div class="container">
+      <h1 class="gallery-page__title">3D ART</h1>
+
+      <div class="art-gallery" id="artGallery">
+        <!-- usa data-w e data-h per indicare il ratio reale -->
+        <a class="art-gallery__source" href="images/3d/citadel.jpg" data-w="4" data-h="5">
+          <img src="images/3d/citadel.jpg" alt="" loading="lazy">
+        </a>
+
+        <a class="art-gallery__source" href="images/3d/newcity.jpg" data-w="16" data-h="9">
+          <img src="images/3d/newcity.jpg" alt="" loading="lazy">
+        </a>
+
+        <a class="art-gallery__source" href="images/3d/downtowncalling.jpg" data-w="4" data-h="5">
+          <img src="images/3d/downtowncalling.jpg" alt="" loading="lazy">
+        </a>
+
+        <a class="art-gallery__source" href="images/3d/companion.jpg" data-w="4" data-h="5">
+          <img src="images/3d/companion.jpg" alt="" loading="lazy">
+        </a>
+
+        <a class="art-gallery__source" href="images/3d/art05.jpg" data-w="4" data-h="3">
+          <img src="images/3d/art05.jpg" alt="" loading="lazy">
+        </a>
+
+        <a class="art-gallery__source" href="images/3d/art06.jpg" data-w="4" data-h="5">
+          <img src="images/3d/art06.jpg" alt="" loading="lazy">
+        </a>
+      </div>
+
+      <div class="explore-more">
+        <h2 class="explore-more__title">EXPLORE MORE</h2>
+        <div class="explore-more__links">
+          <a href="animations.html">ANIMATIONS</a>
+          <a href="illustrations.html">ILLUSTRATIONS</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__text">Copyright &copy; 2026 Marco Zagara. All rights reserved.</div>
+
+      <div class="footer__icons">
+        <a href="https://instagram.com/marcozagara" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="images/instagram.svg" alt="Instagram">
+        </a>
+
+        <a href="https://x.com/marcozagara" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <img src="images/x.svg" alt="X">
+        </a>
+
+        <a href="mailto:marcozagara17@email.com" aria-label="Email">
+          <img src="images/email.svg" alt="Email">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>
+
