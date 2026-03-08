@@ -856,7 +856,7 @@ background-repeat: no-repeat;;
 
 @media (max-width: 768px) {
   .hero-illustration {
-    transform: translateY(-50px);
+    transform: translateY(-70px);
     right: 6px;
   }
 }
@@ -865,3 +865,4 @@ background-repeat: no-repeat;;
   position: relative;
   z-index: 2;
 }
+
