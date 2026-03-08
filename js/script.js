@@ -1,14 +1,12 @@
 const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 400) {
+  if (window.scrollY > 140) {
     navbar.classList.add("scrolled");
   } else {
     navbar.classList.remove("scrolled");
   }
 });
-
-
 
 
 document.addEventListener("contextmenu", (event) => {
@@ -29,3 +27,26 @@ document.addEventListener("keydown", (event) => {
     event.preventDefault();
   }
 });
+
+
+
+
+
+const navToggle = document.getElementById("navToggle");
+const navMenu = document.getElementById("navMenu");
+
+if (navToggle && navMenu && navbar) {
+  navToggle.addEventListener("click", () => {
+    navbar.classList.toggle("nav--open");
+
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", String(!expanded));
+  });
+
+  navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navbar.classList.remove("nav--open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
