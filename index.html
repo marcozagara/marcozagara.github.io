@@ -49,8 +49,25 @@
 
   </div>
 
-  <div class="nav__mobile-menu" id="navMenu">
-    <a href="#work">WORK</a>
+    <div class="nav__mobile-menu" id="navMenu">
+    <div class="nav__mobile-work">
+      <button
+        class="nav__mobile-work-toggle"
+        id="mobileWorkToggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobileWorkSubmenu"
+      >
+        <span>WORK</span>
+        <span class="nav__mobile-work-arrow" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav__mobile-submenu" id="mobileWorkSubmenu">
+        <a href="3dart.html">3D ART</a>
+        <a href="animations.html">ANIMATIONS</a>
+        <a href="illustrations.html">ILLUSTRATIONS</a>
+      </div>
+    </div>
     <a href="#about">ABOUT</a>
     <a href="#contact">CONTACT</a>
     <a href="https://displate.com/artist/marcozagara?art=5eda8d5497c77" target=”_blank”>PRINTS</a>
@@ -91,18 +108,18 @@
 
     <div class="cards">
       <a class="card" href="3dart.html" aria-label="3D Art">
-        <img class="card__img" src="images/cards-3d.jpg" alt="3D Art cover" />
+        <img class="card__img" src="images/cards-3d-cmp.jpg" alt="3D Art cover" />
         <div class="card__label">3D ART</div>
       </a>
 
       <a class="card" href="animations.html" aria-label="Animations">
-        <img class="card__img" src="images/cards-animations.jpg" alt="Animations cover" />
+        <img class="card__img" src="images/cards-animations-cmp.jpg" alt="Animations cover" />
         <div class="card__label">ANIMATIONS</div>
       </a>
 
       <a class="card" href="illustrations.html" aria-label="Illustrations">
 
-        <img class="card__img" src="images/cards-illustrations.jpg" alt="Illustrations cover" />
+        <img class="card__img" src="images/cards-illustrations-cmp.jpg" alt="Illustrations cover" />
         <div class="card__label">ILLUSTRATIONS</div>
       </a>
     </div>
@@ -120,7 +137,7 @@
     </div>
 
     <div class="about-photo">
-      <img src="images/about-photo.jpg" alt="Marco Zagara">
+      <img src="images/about-photo-cmp.jpg" alt="Marco Zagara">
     </div>
 
     <div class="about-bio">
@@ -137,7 +154,7 @@ Partnering with clients and brands around the globe to solve problems using crea
 
       <h3 class="clients-title">SELECTED CLIENTS</h3>
 
-      <img src="images/clients.png" alt="Selected clients">
+      <img src="images/clients-cmp.png" alt="Selected clients">
 
     </div>
 
@@ -202,5 +219,4 @@ Partnering with clients and brands around the globe to solve problems using crea
 </body>
 
 </html>
-
 
