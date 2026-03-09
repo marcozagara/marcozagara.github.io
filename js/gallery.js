@@ -5,7 +5,8 @@
   const sourceNodes = Array.from(gallery.querySelectorAll(".art-gallery__source"));
   if (!sourceNodes.length) return;
 
-  const columns = 3;
+  const path = window.location.pathname.toLowerCase();
+  const is3DArtPage = path.includes("3dart.html");
   let currentIndex = 0;
   let dragActive = false;
   let startX = 0;
@@ -188,24 +189,46 @@
     gallery.querySelectorAll(".art-gallery__row").forEach((row) => row.remove());
 
     const gap = readGap();
+    const rows = [];
+    let cursor = 0;
+
+    while (cursor < items.length) {
+      let expectedSize = 3;
+      if (is3DArtPage) {
+        const probe = items.slice(cursor, cursor + 3);
+        const hasLandscape = probe.some((item) => item.ratio > 1);
+        if (hasLandscape) {
+          expectedSize = 2;
+        }
+      }
+
+      const rowItems = items.slice(cursor, cursor + expectedSize);
+      rows.push({
+        startIndex: cursor,
+        expectedSize,
+        rowItems
+      });
+      cursor += expectedSize;
+    }
+
     const completeRowHeights = [];
 
-    for (let i = 0; i < items.length; i += columns) {
-      const rowItems = items.slice(i, i + columns);
-      if (rowItems.length !== columns) continue;
+    rows.forEach((rowData) => {
+      const { expectedSize, rowItems } = rowData;
+      if (rowItems.length !== expectedSize) return;
       const ratiosSum = rowItems.reduce((sum, item) => sum + item.ratio, 0) || 1;
-      const rowHeight = (width - gap * (columns - 1)) / ratiosSum;
+      const rowHeight = (width - gap * (expectedSize - 1)) / ratiosSum;
       completeRowHeights.push(rowHeight);
-    }
+    });
 
     const baseRowHeight = completeRowHeights.length
       ? completeRowHeights.reduce((sum, value) => sum + value, 0) / completeRowHeights.length
       : null;
 
-    for (let i = 0; i < items.length; i += columns) {
-      const rowItems = items.slice(i, i + columns);
+    rows.forEach((rowData) => {
+      const { startIndex, expectedSize, rowItems } = rowData;
       const ratiosSum = rowItems.reduce((sum, item) => sum + item.ratio, 0) || 1;
-      const rowHeight = rowItems.length === columns || baseRowHeight === null
+      const rowHeight = rowItems.length === expectedSize || baseRowHeight === null
         ? (width - gap * (rowItems.length - 1)) / ratiosSum
         : baseRowHeight;
 
@@ -214,7 +237,7 @@
       row.style.height = `${rowHeight}px`;
 
       rowItems.forEach((item, offset) => {
-        const itemIndex = i + offset;
+        const itemIndex = startIndex + offset;
         const link = document.createElement("a");
         link.className = "art-gallery__item";
         link.href = item.href;
@@ -231,7 +254,7 @@
       });
 
       gallery.appendChild(row);
-    }
+    });
   };
 
   let frameId = 0;
