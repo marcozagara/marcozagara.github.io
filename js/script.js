@@ -77,3 +77,4 @@ if (navToggle && navMenu && navbar) {
     });
   });
 }
+
