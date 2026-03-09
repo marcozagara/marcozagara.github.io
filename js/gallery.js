@@ -11,6 +11,7 @@
   let startX = 0;
   let deltaX = 0;
   let activePointerId = null;
+  let suppressCloseClick = false;
 
   const lightbox = document.createElement("div");
   lightbox.className = "lightbox";
@@ -34,6 +35,7 @@
   const track = document.createElement("div");
   track.className = "lightbox__track";
   viewport.appendChild(track);
+
 
   lightbox.appendChild(prevButton);
   lightbox.appendChild(viewport);
@@ -76,19 +78,20 @@
     return width + readGap();
   };
 
-  const updateSlide = () => {
-    track.style.transition = "transform 0.35s ease";
+  const updateSlide = (animate = true) => {
+    track.style.transition = animate ? "transform 0.35s ease" : "none";
     track.style.transform = `translateX(-${currentIndex * getSlideStep()}px)`;
     updateArrows();
   };
 
   const openLightbox = (index) => {
     currentIndex = index;
-    syncLightboxGap();
-    updateSlide();
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    syncLightboxGap();
+    updateSlide(false);
+    requestAnimationFrame(() => updateSlide(false));
   };
 
   const closeLightbox = () => {
@@ -117,6 +120,9 @@
   const startDrag = (event) => {
     if (!lightbox.classList.contains("is-open")) return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
+    if (event.target.closest(".lightbox__arrow")) {
+      return;
+    }
 
     dragActive = true;
     activePointerId = event.pointerId;
@@ -144,6 +150,13 @@
 
     const width = viewport.clientWidth || 1;
     const threshold = Math.min(120, width * 0.2);
+    const movedEnoughToBeDrag = Math.abs(deltaX) > 6;
+    if (movedEnoughToBeDrag) {
+      suppressCloseClick = true;
+      setTimeout(() => {
+        suppressCloseClick = false;
+      }, 40);
+    }
 
     if (deltaX <= -threshold && currentIndex < items.length - 1) {
       currentIndex += 1;
@@ -251,8 +264,12 @@
   });
 
   lightbox.addEventListener("click", (event) => {
+    if (suppressCloseClick) {
+      return;
+    }
+
     if (
-      event.target.closest(".lightbox__viewport") ||
+      event.target.closest(".lightbox__slide img") ||
       event.target.closest(".lightbox__arrow")
     ) {
       return;
