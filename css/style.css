@@ -1139,6 +1139,12 @@ section {
   z-index: 2;
 }
 
+@media (max-width: 768px) {
+  .hero > .container:last-of-type {
+    transform: translateY(-20px);
+  }
+}
+
 /* =========================
    3D ART PAGE
 ========================= */
@@ -1593,5 +1599,6 @@ section {
     grid-template-columns: 1fr;
   }
 }
+
 
 
