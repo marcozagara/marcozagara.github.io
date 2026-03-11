@@ -41,6 +41,9 @@ section {
 /* HERO */
 .hero {
   --hero-deco-size: clamp(60px, 20vw, 100px);
+  --hero-deco-height: calc(var(--hero-deco-size) * 0.2099567);
+  --hero-squares-width: calc(var(--hero-deco-size) * 0.711039);
+  --hero-arrow-width: calc(var(--hero-deco-size) * 0.378692);
   min-height: 100vh;
   position: relative;
   display: flex;
@@ -193,12 +196,6 @@ section {
 }
 
 @media (max-width: 768px) {
-
-  .nav__inner {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
   .nav__links {
     gap: 12px;
   }
@@ -1100,7 +1097,12 @@ section {
 
 .hero-ill-wrap {
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
   z-index: 1;
   pointer-events: none;
 }
@@ -1109,18 +1111,18 @@ section {
   position: absolute;
   left: 0;
   right: auto;
-  top: calc(100% - var(--hero-deco-size) - 100px);
-  width: var(--hero-deco-size);
-  height: var(--hero-deco-size);
+  top: calc(100% - var(--hero-deco-height) - 100px);
+  width: var(--hero-squares-width);
+  height: var(--hero-deco-height);
   object-fit: contain;
 }
 
 .hero-scroll-link {
   position: absolute;
   right: 0;
-  top: calc(100% - var(--hero-deco-size) - 100px);
-  width: var(--hero-deco-size);
-  height: var(--hero-deco-size);
+  top: calc(100% - var(--hero-deco-height) - 100px);
+  width: var(--hero-arrow-width);
+  height: var(--hero-deco-height);
   display: block;
   pointer-events: auto;
 }
@@ -1219,6 +1221,7 @@ section {
   object-fit: cover;
   background: #000;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .anim-controls {
@@ -1241,10 +1244,12 @@ section {
   color: #fff;
   font-family: "Space Mono", monospace;
   font-size: 16px;
+  font-weight: 700;
   line-height: 1;
   cursor: pointer;
   padding: 2px 0;
   min-width: 24px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .anim-controls__time {
@@ -1263,6 +1268,7 @@ section {
   background: rgba(255, 255, 255, 0.25);
   overflow: hidden;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .anim-controls__buffered,
@@ -1369,6 +1375,7 @@ section {
   height: 100%;
   object-fit: cover;
   background: #000;
+  -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -1388,6 +1395,24 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .animations-grid__item:focus,
+  .animations-grid__item:focus-visible,
+  .animations-grid__item video:focus,
+  .animations-grid__item video:focus-visible,
+  .anim-controls__play:focus,
+  .anim-controls__play:focus-visible,
+  .anim-controls__bar:focus,
+  .anim-controls__bar:focus-visible,
+  .lightbox__slide video:focus,
+  .lightbox__slide video:focus-visible,
+  .lightbox__arrow:focus,
+  .lightbox__arrow:focus-visible {
+    outline: none;
+  }
 }
 
 .lightbox__arrow--prev {
@@ -1568,6 +1593,5 @@ section {
     grid-template-columns: 1fr;
   }
 }
-
 
 
