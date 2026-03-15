@@ -103,6 +103,15 @@ if (navToggle && navMenu && navbar) {
       navToggle.setAttribute("aria-expanded", "false");
     });
   });
+
+  document.addEventListener("click", (event) => {
+    if (!navbar.classList.contains("nav--open")) return;
+    if (navbar.contains(event.target)) return;
+
+    navbar.classList.remove("nav--open");
+    closeWorkSubmenu();
+    navToggle.setAttribute("aria-expanded", "false");
+  });
 }
 
 const heroTitle = document.querySelector(".hero__title");
@@ -564,4 +573,3 @@ if (animationVideos.length) {
     });
   }
 }
-
